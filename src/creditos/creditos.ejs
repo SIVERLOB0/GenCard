@@ -1,0 +1,164 @@
+<%- include('partials/header', { title: 'Créditos' }) %>
+
+<main class="credits-main">
+  <h2 class="credits-title"><%= title %></h2>
+
+  <section class="credits-card">
+    <p class="credits-desc">
+      Proyecto desarrollado con dedicación por <strong>Siver 🐺</strong>
+    </p>
+
+    <div class="credits-row">
+      <!-- Reloj digital -->
+      <div class="credits-item">
+        <div id="digital-clock" class="digital-clock">00:00:00</div>
+      </div>
+
+      <!-- Imagen del lobo -->
+      <div class="credits-item">
+        <img src="/img/wolf-gen.jpeg.jpeg" alt="Logo Lobo" class="wolf-img" />
+      </div>
+
+      <!-- Icono de terminal -->
+      <div class="credits-item">
+        <svg class="terminal-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 17l6-6-6-6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 19h8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="2" y="3" width="20" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+
+    <p class="credits-footer">
+      © 2025 – Todos los derechos reservados. <br />
+      Esta página es solo para fines de prueba.
+    </p>
+  </section>
+</main>
+
+<%- include('partials/footer') %>
+
+<!-- ====== CSS embebido ====== -->
+<style>
+  .credits-main {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .credits-title {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    color: #5BC0BE;
+  }
+
+  .credits-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgba(18, 37, 51, 0.85);
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .credits-desc {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #E6E9EF;
+  }
+
+  .credits-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .credits-item {
+    flex: 0 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Reloj digital */
+  .digital-clock {
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #071826;
+    color: #00FF88;
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    min-width: 80px;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  /* Imagen del lobo */
+  .wolf-img {
+    width: 60px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    object-fit: cover;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .wolf-img:hover {
+    box-shadow: 0 0 12px #00FF88;
+  }
+
+  /* Icono terminal */
+  .terminal-svg {
+    width: 50px;
+    height: 50px;
+    stroke: #5BC0BE;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .terminal-svg:hover {
+    transform: scale(1.1);
+    stroke: #00FF88;
+  }
+
+  .credits-footer {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #9EA8B4;
+  }
+</style>
+
+<!-- ====== JS de funciones ====== -->
+<script>
+  (() => {
+    const el = document.getElementById('digital-clock');
+
+    function actualizar() {
+      const t = new Date();
+      let h = t.getHours();
+      let m = String(t.getMinutes()).padStart(2, '0');
+      let s = String(t.getSeconds()).padStart(2, '0');
+
+      // Formato 12h con AM/PM
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12 || 12;
+      h = String(h).padStart(2, '0');
+
+      // Parpadeo de los dos puntos
+      const sep = t.getSeconds() % 2 === 0 ? ':' : ' ';
+      el.textContent = `${h}${sep}${m}${sep}${s} ${ampm}`;
+    }
+
+    setInterval(actualizar, 1000);
+    actualizar();
+  })();
+
+  // Efecto click en terminal
+  const terminal = document.querySelector('.terminal-svg');
+  terminal.addEventListener('click', () => {
+    console.log("> npm run dev 🟢");
+  });
+</script>
