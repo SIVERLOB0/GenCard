@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title || 'Lobos Nocturnos' %></title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header>
+    <!-- Botón hamburguesa SVG (☰ → ✖) -->
+    <div class="menu-container" role="navigation" aria-label="Main menu">
+      <button id="menu-toggle" class="menu-btn" aria-label="Abrir menú" type="button">
+        <svg id="menu-icon" width="36" height="36" viewBox="0 0 30 30" aria-hidden="true">
+          <!-- Colocadas a 8, 15, 22; el centro es 15 -->
+          <line class="line top" x1="5" y1="8"  x2="25" y2="8"  />
+          <line class="line middle" x1="5" y1="15" x2="25" y2="15" />
+          <line class="line bottom" x1="5" y1="22" x2="25" y2="22" />
+        </svg>
+      </button>
+
+      <nav id="side-menu" class="side-menu" aria-hidden="true">
+        <ul>
+          <li><a href="/">CardGen</a></li>
+          <li><a href="/tempmail">TempMail</a></li>
+          <li><a href="/extraplorador">Extraplorador</a></li>
+          <li><a href="/creditos">Créditos</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Título y logo -->
+    <h1 class="site-title">
+      WOLF - GEN
+      <img src="/img/wolf-gen.jpeg.jpeg" alt="Logo Lobo Hacker" style="height:50px;">
+    </h1>
+  </header>
