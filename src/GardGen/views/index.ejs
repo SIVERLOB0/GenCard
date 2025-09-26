@@ -1,0 +1,98 @@
+<%- include('partials/header', { title: 'CardGen' }) %>
+
+<main>
+  <!-- Formulario -->
+  <form id="binForm" class="form-grid">
+    <div class="form-group">
+      <label for="bin">BIN / Patrón (usa "x" como dígito aleatorio):</label>
+      <input
+        type="text"
+        id="bin"
+        name="bin"
+        placeholder="Ej: 455675xxxxxxxxxx o 456677"
+        maxlength="16"
+        pattern="[0-9xX]{1,16}"
+        title="Solo números y 'x', máximo 16 caracteres"
+        required
+      />
+      <small class="hint">
+        Puedes mezclar números y "x" en cualquier posición.<br/>
+        Ejemplos: <code>445578277777xxxx</code> | <code>44566x788x7889x</code>
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="exp">Mes/Año (MM/YY):</label>
+      <input
+        type="text"
+        id="exp"
+        name="exp"
+        placeholder="08/28"
+        maxlength="5"
+        pattern="^(0[1-9]|1[0-2])\/\d{2}$"
+        title="Formato MM/YY"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="cvv">CVV (3 dígitos):</label>
+      <input
+        type="text"
+        id="cvv"
+        name="cvv"
+        placeholder="123"
+        pattern="^\d{3}$"
+        title="3 dígitos"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Cantidad:</label>
+      <input
+        type="number"
+        id="quantity"
+        name="quantity"
+        min="1"
+        max="100"
+        value="5"
+        placeholder="5"
+      />
+    </div>
+
+    <div class="form-group full">
+      <button type="submit">Generar tarjetas</button>
+    </div>
+  </form>
+
+  <!-- Contenedor fijo para la información del BIN -->
+  <div id="bin-info" class="bin-info-box">
+    <h3>Información del BIN</h3>
+    <div class="bin-details">
+      <p>Esperando consulta...</p>
+    </div>
+  </div>
+
+  <!-- Contenedor fijo para la tabla de tarjetas -->
+  <div class="table-container">
+  <h3>Tarjetas generadas</h3>
+  <table id="results">
+    <thead>
+      <tr>
+        <th>Cop</th>
+        <th>Número</th>
+        <th>Exp</th>
+        <th>CVV</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="4" style="text-align:center; color: var(--color-muted);">
+          Esperando generación...
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</main>
+
+<%- include('partials/footer') %>
